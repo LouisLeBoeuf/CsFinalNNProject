@@ -32,18 +32,18 @@ np.random.seed(42);
 #drone is a 2 thruster ship they can thrust up and down extremely unstable must have 5 inputs and 2 outputs [5,4,2]
 #gimbaldrone is a 2 gimballed thruster ship must have 5 inputs and 4 outputs [5,4,4]
 
-ls = [5,4,4] #size of the neural network to use
-sim_class = gimbaldrone.GimbalDrone #define which drone type to use spinship.
+ls = [5,4,2] #size of the neural network to use
+sim_class = drone.Drone #define which drone type to use spinship. ie gimbaldrone.GimbalDrone
 ps = 1/30.0
 
 population, generation = ga.run_evolution(
     # populate_func=partial(read_population),
     sim_class = sim_class,
     pop_mode = "generate", # Generate new genomes or read from previous trial "generate" or "read"
-    #pop_file = "savedgenome.txt",
+    pop_file = "savedgenome.txt",
     max_time = 15, #max time to allow per generation
     fitness_limit = 50000, #max fitness one goal is worth 10,000
-    generation_limit = 200, #how many generations to run
+    generation_limit = 500, #how many generations to run
     layer_sizes = ls 
 )
 

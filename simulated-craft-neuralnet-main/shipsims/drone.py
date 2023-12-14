@@ -17,11 +17,11 @@ import math
 
 class Drone():
     max_speed = 5
-    GRAVITY = 750.0
+    GRAVITY = 0 #default is 750
     scale = .5
-    arm_length = 40
+    arm_length = 40 #Size from CoM to each wheel
     MAXTHRUST = 2000.0
-    MOI = 3
+    MOI = 3 #moment of interia
     
     def __init__(self, x, y, width, height, goal_thresh = 30, max_time = 15, do_draw = False):
         self.screen_width = width
@@ -103,7 +103,7 @@ class Drone():
             # print("VEL: X: ", self.velocity[0], " Y: ", self.velocity[1])
             # Gravity
             self.velocity[1] += Drone.GRAVITY * dt
-            # Apply velocity chang
+            # Apply velocity change
             self.x += self.velocity[0] * dt
             self.y += self.velocity[1] * dt
 
